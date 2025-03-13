@@ -22,9 +22,8 @@ jobs:
                -H "Content-Type: application/json" \
                -H "Authorization: Bearer ${{ secrets.ARGOCD_SERVER_SECRET_KEY }}" \
                -d '{
-                 "event": "push",
+                 "ref": "refs/heads/main",
                  "repository": {
-                     "repoURL": "https://github.com/moonblueblue/moizago-helm-chart",
-                     "revision": "main"
+                     "clone_url": "https://github.com/moonblueblue/moizago-helm-chart"
                  }
                }'
