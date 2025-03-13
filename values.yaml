@@ -15,7 +15,7 @@ image:
 
 # This is for the secrets for pulling an image from a private repository more information can be found here: https://kubernetes.io/docs/tasks/configure-pod-container/pull-image-private-registry/
 imagePullSecrets:
-  - name: harbor-registry
+  - name: harbor-registry-secret
 # This is to override the chart name.
 nameOverride: ""
 fullnameOverride: ""
@@ -62,7 +62,7 @@ ingress:
   enabled: true
   className: "nginx"
   annotations:
-    cert-manager.io/cluster-issuer: "letsencrypt"
+    cert-manager.io/cluster-issuer: "letsencrypt-staging"
   hosts:
     - host: test.moizago.store
       paths:
