@@ -1,6 +1,6 @@
 # @format
 
-# Default values for ..
+# Values for moizago-admin application
 # This is a YAML-formatted file.
 # Declare variables to be passed into your templates.
 
@@ -9,18 +9,18 @@ replicaCount: 1
 
 # This sets the container image more information can be found here: https://kubernetes.io/docs/concepts/containers/images/
 image:
-  repository: harbor.moizago.store/nextjs/moizago-app
+  repository: harbor.moizago.store/nextjs/moizago-admin
   # This sets the pull policy for images.
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
-  tag: "1.0.173"
+  tag: "latest"
 
 # This is for the secrets for pulling an image from a private repository more information can be found here: https://kubernetes.io/docs/tasks/configure-pod-container/pull-image-private-registry/
 imagePullSecrets:
   - name: harbor-registry-secret # ✅ 직접 생성해야 함❗️
 # This is to override the chart name.
-nameOverride: ""
-fullnameOverride: ""
+nameOverride: "moizago-admin"
+fullnameOverride: "moizago-admin"
 
 # This section builds out the service account more information can be found here: https://kubernetes.io/docs/concepts/security/service-accounts/
 serviceAccount:
@@ -68,14 +68,14 @@ ingress:
   annotations:
     cert-manager.io/cluster-issuer: "letsencrypt"
   hosts:
-    - host: test.moizago.store
+    - host: admin.moizago.store
       paths:
         - path: /
           pathType: ImplementationSpecific
   tls:
-    - secretName: moizago-ingress-tls
+    - secretName: moizago-admin-tls
       hosts:
-        - test.moizago.store
+        - admin.moizago.store
 
 resources:
   {}
